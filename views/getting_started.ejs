@@ -1,0 +1,77 @@
+<%- include("header"); -%>
+
+
+<!-- CSS -->
+
+<style>
+   
+
+    .form-signin {
+        width: 100%;
+        height: 100%;
+        display: block;
+        min-height: 500px;
+        max-width: 330px;
+        padding: 15px;
+        margin: 0 auto;
+    }
+
+    .form-signin .checkbox {
+        font-weight: 400;
+    }
+
+    .form-signin .form-control {
+        position: relative;
+        box-sizing: border-box;
+        height: auto;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .form-signin .form-control:focus {
+        z-index: 2;
+    }
+
+    .form-signin input [id="inputOrganization"] {
+        margin-bottom: -1px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    .form-signin input {
+        margin-bottom: -1px;
+        border-radius: 0;
+    }
+
+    .form-signin input[type="password"] {
+        margin-bottom: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6">
+            <form class="form-signin form-group" method="POST" action="/">
+                <h1 class="h3 mb-3 font-weight-normal">Please enter some starting information:</h1>
+                <label for="inputOrganization" class="sr-only">Organization Name</label>
+                <input type="text" name="inputOrganization" id="inputOrganization" class="form-control" placeholder="Organization Name" required
+                    autofocus>
+                <label for="inputChapter" class="sr-only">Regional Grouping (ie., Chapter or Colony)</label>
+                <input type="text" name="inputChapter" id="inputChapter" class="form-control" placeholder="Chapter/Colony" required>
+                <br>
+                <label for="foundingDate"></label>
+                <input type="date" id="foundingDate" name="foundingDate" class="form-control" placeholder="Founding Date">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            </form>
+        </div>
+        <div class="col-lg-6">
+
+        </div>
+    </div>
+
+</div>
+
+
+<%- include("footer"); -%>
