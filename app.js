@@ -9,7 +9,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-const screen_height = 1000;
+const screen_height = 1800;
 const tracked_positions = 
 [
   "NYSE:DG:d9f84", 
