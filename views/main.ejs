@@ -35,6 +35,11 @@
 </div>
 <!-- TradingView Widget END -->
 <!-- TradingView Widget LOOP FOR TRACKED STOCKS-->
+<% var h = screenHeight %>
+<% var strlength = trackedPositions.length; %>
+<% var barHeight = h/strlength; %>
+
+
 <% for(var i = 0; i < trackedPositions.length; i++){ %>
 
 <% var split_string = trackedPositions[i].split(':'); %>
@@ -48,7 +53,7 @@
         new TradingView.widget(
             {
                 "width": "auto",
-                "height": 175,
+                "height": "<%= barHeight %>",
                 "symbol": "<%= split_string[0] %>:<%= split_string[1] %>",
                 "interval": "5",
                 "timezone": "Etc/UTC",
