@@ -10,17 +10,16 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
+const tracked_positions = ["NASDAQ:APPL:6ae20", "NASDAQ:AAPL:3dv40"];
+
 //Home
 app.get("/", function(req, res){
-  res.render("home", {
-    startingContent: homeStartingContent,
-    posts: posts
-    });
+  res.render("main", {trackedPositions: tracked_positions});
 });
 
 
 app.get("/configure", function(req, res){
-  res.render("about", {aboutContent: aboutContent});
+  res.render("configure", {aboutContent: aboutContent});
 });
 
 
