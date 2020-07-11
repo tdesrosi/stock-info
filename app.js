@@ -10,7 +10,14 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-const tracked_positions = ["NASDAQ:APPL:6ae20", "NASDAQ:AAPL:3dv40"];
+const tracked_positions = 
+[
+  "NYSE:DG:d9f84", 
+  "NYSE:WPM:3dv40", 
+  "NASDAQ:CSCO:5h30r", 
+  "NYSE:AZN:2a872",
+  "NASDAQ:ACIA:587a2" 
+];
 
 //Home
 app.get("/", function(req, res){
