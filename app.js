@@ -3,13 +3,13 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
-const _ = require("lodash");
 
 const app = express();
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
+const screen_height = 1000;
 const tracked_positions = 
 [
   "NYSE:DG:d9f84", 
@@ -21,7 +21,7 @@ const tracked_positions =
 
 //Home
 app.get("/", function(req, res){
-  res.render("main", {trackedPositions: tracked_positions});
+  res.render("main", {trackedPositions: tracked_positions, screenHeight: screen_height});
 });
 
 
