@@ -16,7 +16,8 @@ const tracked_positions =
   "NYSE:WPM:3dv40", 
   "NASDAQ:CSCO:5h30r", 
   "NYSE:AZN:2a872",
-  "NASDAQ:ACIA:587a2" 
+  "NASDAQ:ACIA:587a2",
+  "NASDAQ:MRNA:473b3" 
 ];
 
 //Home
