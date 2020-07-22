@@ -1,0 +1,20 @@
+<%- include("partials/header"); -%>
+
+<ul>
+  <% for(var i = 0; i < trackedPositions.length; i++){ %>
+
+    <% var split_string = trackedPositions[i].split(':'); %>
+
+    <li><%= split_string[0] %> - <%= split_string[1] %></li>
+
+  <% } %>
+</ul>
+
+
+<form action="/configure" class="" method="POST">
+  <input type="text" name="newStockExchange">
+  <input type="text" name="newStockName">
+  <button type="submit" name="button">Add</button>
+</form>
+
+<%- include("partials/footer"); -%>
