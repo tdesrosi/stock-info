@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 
 const app = express();
+
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
@@ -20,14 +21,23 @@ const tracked_positions =
   "NASDAQ:MRNA:473b3" 
 ];
 
-//Home
+//Main Display
+//This is what the Raspberry Pi loads upon startup
 app.get("/", function(req, res){
   res.render("main", {trackedPositions: tracked_positions, screenHeight: screen_height});
 });
 
-
+//Configuration 
 app.get("/configure", function(req, res){
-  res.render("configure", {aboutContent: aboutContent});
+  res.render("configure", {trackedPositions: tracked_positions});
+});
+
+//Configuration
+app.post("/configure", function(req, res){
+  var new_stock = req.body.newStock;
+  var new_exchange = req.body.newStockExchange;
+  trackedPositions.push(new_exchange + ":" + new_stock + ":" + "578a2");
+  res.render("configure", {trackedPositions: tracked_positions});
 });
 
 
