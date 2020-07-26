@@ -1,20 +1,99 @@
 <%- include("partials/header"); -%>
 
-<ul>
-  <% for(var i = 0; i < trackedPositions.length; i++){ %>
+<style>
+  body {
+    margin: 20px;
+    color: #9e9e9e;
+  }
 
-    <% var split_string = trackedPositions[i].split(':'); %>
+  .list,
+  h1,
+  h3 {
+    color: #dddddd;
+  }
 
-    <li><%= split_string[0] %> - <%= split_string[1] %></li>
+  .form, p {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 
-  <% } %>
-</ul>
+  input,
+  button {
+    width: 100%;
+  }
+
+  table,
+  td,
+  th {}
+</style>
+<!-- Heading -->
+<div>
+  <h1>Stock Configuration</h1>
+  <br>
+  <button style="width: 300px;" onclick="document.location='/'">Main Page</button>
+  <button style="width: 300px;" onclick="document.location='/configure'">Configuration</button>
+  <p>These are all of your tracked stock positions. Check the box next to the stock to remove it from the list, and add
+    a new stock by filling out the form below.</p>
+
+</div>
+
+<!-- Bullet list of tracked stocks -->
+<div class="list">
+  <ul>
+    <% trackedPositions.forEach(function(item){ %>
+    <form action="/delete" method="post">
+      <div class="item">
+        <table>
+          <tr>
+            <td style="width: 30px;">
+              <input type="checkbox" name="checkbox" value="<%= item._id %>" onChange="this.form.submit()">
+            </td>
+            <td>
+              <h4 style="margin: auto;"><%= item.exchange %> : <%= item.stock %></h4>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+    <% }); %>
+  </ul>
+</div>
+
+<!-- Form EJS Section -->
+<div class="form">
+  <h3>Add a New Stock:</h3>
+  <form action="/configure" class="" method="POST">
+    <table style="width: 300px;">
+      <tr>
+        <td>
+          <label style="padding-right: 10px;" for="newStockExchange">Exchange </label>
+        </td>
+        <td>
+          <input type="text" name="newStockExchange">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label style="padding-right: 10px;" for="newStockName">Symbol </label>
+        </td>
+        <td>
+          <input type="text" name="newStockName">
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <button type="submit" name="button">Add</button>
+        </td>
+
+      </tr>
+
+    </table>
+
+  </form>
+</div>
 
 
-<form action="/configure" class="" method="POST">
-  <input type="text" name="newStockExchange">
-  <input type="text" name="newStockName">
-  <button type="submit" name="button">Add</button>
-</form>
+
 
 <%- include("partials/footer"); -%>
