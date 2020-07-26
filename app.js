@@ -1,9 +1,11 @@
 //jshint esversion:6
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require("lodash");
 const mongoose = require("mongoose");
+require('dotenv').config();
 
 const app = express();
 
@@ -17,11 +19,13 @@ const screen_height = 1830;
 
 //mongodb connection. I am using a free tier of mondodb's cloud Atlas.
 //Store connection vars in environment
-mongoose.connect("mongodb+srv://" + "main-user" + ":" + "Thomas123" + "@cluster0.9ehbo.mongodb.net/stocks",
+mongoose.connect("mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASSWORD + "@cluster0.9ehbo.mongodb.net/stocks",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true
   });
+
+console.log(process.env.DB_PASSWORD);
 
 //set up schema and define a test item.
 //  the "code" field is a mystery to me, TradingView widgets don't wory without it,
